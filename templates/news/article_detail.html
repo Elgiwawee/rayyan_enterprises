@@ -1,0 +1,100 @@
+{% extends "news/base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+<style>
+    /* Main Article Container */
+    .article-detail {
+        background: #fff;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        max-width: 800px;
+        margin: 3rem auto;
+        text-align: center;
+    }
+
+    /* Article Title */
+    .article-detail h1 {
+        font-size: 2.2rem;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    /* Meta Information */
+    .article-meta {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    /* Article Content */
+    .article-content {
+        line-height: 1.8;
+        font-size: 1.2rem;
+        text-align: justify;
+        color: #444;
+    }
+
+    /* Admin Links Section */
+    .admin-links {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 2px solid #eee;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* Admin Buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-danger:hover {
+        background-color: #a71d2a;
+    }
+</style>
+    <div class="article-detail">
+        <h1>{{ article.title }}</h1>
+        <p class="article-meta">
+            Published on: {{ article.created_at|date:"M d, Y" }}
+            {% if article.updated_at %}
+                (Updated: {{ article.updated_at|date:"M d, Y" }})
+            {% endif %}
+        </p>
+
+        <div class="article-content">
+            {{ article.content|linebreaks }}
+        </div>
+        
+        {% if user.is_staff %}
+            <div class="admin-links">
+                <a href="{% url 'news:update_article' article.pk %}" class="btn btn-primary">التعديل</a>
+                <a href="{% url 'news:delete_article' article.pk %}" class="btn btn-danger">الحذف</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

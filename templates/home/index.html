@@ -1,0 +1,64 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Rayyan Enterprises{% endblock %}
+
+{% block content %}
+<style>
+    /* Full-page styling */
+    .home-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        background: linear-gradient(135deg, #007bff, #6610f2);
+        color: white;
+        text-align: center;
+        padding: 50px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Content box */
+    .home-content {
+        max-width: 800px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Hover effect */
+    .home-content:hover {
+        transform: scale(1.03);
+    }
+
+    /* Headline styling */
+    .home-content h1 {
+        font-size: 2.8rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Description */
+    .home-content p {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        text-align: center;
+        color: #272020;
+    }
+</style>
+<div class="container mt-5">
+    <div class="home-container">
+        <div class="home-content">
+            <h1>مرحبا بك في شركة ريان للمقالات و التجارة</h1>
+            <p>تأسست الشركة كمنظمة خيرية انسانية تحت رقم 331 مرخصة من وزارة الصناعة والتجارة ذاتية التمويل وهي في عام 1442 غير ربحية ولا حكومية ولهدفها خدمة انسانية بعمل في مجال العمل الخيري ومساعدة الفقراء والمحتاجين، بالإضافة الى دعوته إلى الله عز وجل، ويساعد على المجتمع من جميع الفئات العمرية من الرجال والنساء والأطفال من خلال أنشطة اللجان المقيدين</p>
+            <h1>هدفنا</h1>
+            <p>يهدف برنامج كفالة يتيم إلى رعاية الأيتام ودعمهم مادياً ومعنوياً ، وذلك اقتداء بقول رسول الله صلى الله عليه وسلم "أنا وكافل اليتيم في الجنة هكذا" وأشار بالسبابة والوسطى.
+                وقد جاء اهتمام الجمعية، بهذه الشريحة من أبناء الأسر المستفيدة من هذه الجمعية لإيمانها بحاجتهم الماسة إلى العديد من الاحتياجات .</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'home/base.html' %}
+
+{% block title %}About Us - My Website{% endblock %}
+{% block content %}
+<style>
+    /* Full-page styling */
+    .about-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        background: linear-gradient(135deg, #007bff, #6610f2);
+        color: white;
+        text-align: center;
+        padding: 50px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Content box */
+    .about-content {
+        max-width: 700px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Hover effect */
+    .about-content:hover {
+        transform: scale(1.03);
+    }
+
+    /* Headline styling */
+    .about-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    /* Paragraph styling */
+    .about-content p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
+</style>
+<div class="container mt-5">
+    <div class="about-container">
+        <div class="about-content">
+            <h1>نبذة عن الفريق:</h1>
+            <p>يعتبر العمل التطوعي توظيفاً للطاقات في كل المجالات الإنسانية والاجتماعية دون تمييز بين جميع الفئات بغرض الارتقاء بالمجتمع دون انتظار مردودٍ مادي، واحتساب الأجر عند الله عز وجل            </p>
+            <h1>من هم أعضاء الفريق؟</h1>
+            <p>هم أفراد متطوعون يشكلون فرق عمل تطوعية تخدم جميع محافظات بنينية من خلال البرامج الخيرية والانسانية  التى تقيمها منظمة الخيرية  وذلك لتحقيق الخطة الاستراتيجية للمنظمة </p>
+            <h1>الرؤية:</h1>
+            <p>النهوض بالعمل التطوعي خدمتاً للمشروعات والانشطة الخيرية .  </p>
+            <h1>الرسالة:</h1>
+            <p>نحو مشاركة فعالة لأفراد المجتمع لتقديم برامج تطوعية للمساهمة في تنمية وتطوير وتحسين مجالات العمل الانساني والخيري بنيني.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

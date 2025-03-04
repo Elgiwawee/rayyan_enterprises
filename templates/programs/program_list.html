@@ -1,0 +1,111 @@
+{% extends "programs/base.html" %}
+
+{% block content %}
+<style>
+    .programs-list-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .programs-list-container h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .programs-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .program-item {
+        background: #f8f9fa;
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .program-link {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .program-link:hover {
+        text-decoration: underline;
+    }
+
+    .program-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    .btn-warning:hover {
+        background-color: #e0a800;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+</style>
+    <div class="programs-list-container">
+        <h2>البرامج</h2>
+        <a href="{% url 'programs:create_program' %}" class="btn btn-primary">إضافة البرنامج</a>
+        <ul class="programs-list">
+            {% for program in programs %}
+                <li class="program-item">
+                    <a href="{% url 'programs:program_detail' program.id %}" class="program-link">{{ program.name }}</a>
+                    <div class="program-actions">
+
+                        {% if user.is_authenticated and user.is_staff %}
+                        <a href="{% url 'programs:update_program' program.id %}" class="btn btn-warning btn-sm">تعديل</a>
+                        <a href="{% url 'programs:delete_program' program.id %}" class="btn btn-danger btn-sm">الغاء</a>
+                        {% endif %}
+                    </div>
+                </li>
+            {% empty %}
+                <p>لا يوجد أي برنامج</p>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Contact Us - Rayyan Contracting Company{% endblock %}
+{% block content %}
+<style>
+    /* Full-page styling */
+    .contact-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        background: linear-gradient(135deg, #28a745, #007bff);
+        color: white;
+        text-align: center;
+        padding: 50px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Content box */
+    .contact-content {
+        max-width: 700px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Hover effect */
+    .contact-content:hover {
+        transform: scale(1.03);
+    }
+
+    /* Headline styling */
+    .contact-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    /* Contact details */
+    .contact-info {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* Icons */
+    .contact-info i {
+        margin-right: 10px;
+        font-size: 1.5rem;
+        color: #ffc107;
+    }
+
+    /* Contact form */
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        outline: none;
+        border: 2px solid #ffc107;
+    }
+
+    .contact-form button {
+        background-color: #ffc107;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+        background-color: #e0a800;
+    }
+</style>
+<div class="container mt-5">
+    <div class="contact-container">
+        <div class="contact-content">
+            <h1>اتصل بنا</h1>
+            <p class="contact-info">
+                <i class="fas fa-envelope"></i> البريد الإلكتروني: contact@example.com <br>
+                <i class="fas fa-phone"></i> الهاتف: +1234567890
+            </p>
+
+            <!-- Contact Form -->
+            <form method="post" class="contact-form">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit">ارسل الرسالة</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

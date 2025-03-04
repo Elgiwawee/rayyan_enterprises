@@ -1,0 +1,92 @@
+{% extends "news/base.html" %}
+
+{% block title %}المقالات{% endblock %}
+
+{% block content %}
+<style>
+    /* Page Background */
+    body {
+        background-color: #f8f9fa;
+    }
+
+    /* Container */
+    .articles-container {
+        max-width: 800px;
+        margin: 3rem auto;
+    }
+
+    /* Article Card Styling */
+    .article-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Hover Effect */
+    .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Article Title Styling */
+    .article-card h2 {
+        margin-top: 0;
+        font-size: 1.6rem;
+        color: #333;
+        transition: color 0.3s;
+    }
+
+    /* Link Styling */
+    .article-card h2 a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    /* Hover Effect for Title */
+    .article-card h2 a:hover {
+        color: #0056b3;
+    }
+
+    /* Meta Information */
+    .article-meta {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Read More Button */
+    .btn-read-more {
+        display: inline-block;
+        padding: 8px 12px;
+        background: #007bff;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .btn-read-more:hover {
+        background: #0056b3;
+    }
+</style>
+    <div class="articles-container">
+        <h1 class="text-center mb-4">📰 المقالات</h1>
+        {% for article in articles %}
+            <div class="article-card">
+                <h2><a href="{% url 'news:article_detail' article.pk %}">{{ article.title }}</a></h2>
+                <p class="article-meta">🕒 انشأ في: {{ article.created_at|date:"M d, Y" }}</p>
+                <p>{{ article.content|truncatechars:250 }}</p>
+                <a href="{% url 'news:article_detail' article.pk %}" class="btn-read-more">📖 اقرأ المزيد</a>
+
+                {% if user.is_authenticated and user.is_staff %}
+                <a href="{% url 'news:update_article' article.pk %}" class="btn-read-more">📖 اعدل المقالة</a>
+                <a href="{% url 'news:delete_article' article.pk %}" class="btn-read-more">📖  احذف المقالة</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "programs/base.html" %}
+
+{% block content %}
+<style>
+    .program-detail-container {
+        background: #fff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 2rem auto;
+        text-align: center;
+    }
+
+    .program-detail-container h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .program-detail-container p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+    }
+
+    .btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+</style>
+    <div class="program-detail-container">
+        <h2>{{ program.name }}</h2>
+        <p>{{ program.description }}</p>
+        <a href="{% url 'programs:program_list' %}" class="btn btn-secondary">الرجوع إلى البرامج</a>
+    </div>
+{% endblock %}

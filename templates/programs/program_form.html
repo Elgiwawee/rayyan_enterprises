@@ -1,0 +1,94 @@
+{% extends "programs/base.html" %}
+
+{% block content %}
+<style>
+    .program-form-container {
+        background: #fff;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 3rem auto;
+        text-align: center;
+    }
+
+    .program-form-container h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .form-group {
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+
+    .form-group label {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+</style>
+    <div class="program-form-container">
+        <h2>{% if form.instance.pk %}التعديل{% else %}الإنشاء{% endif %} البرنامج</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success">حفظ</button>
+                <a href="{% url 'programs:program_list' %}" class="btn btn-secondary">الغاء</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
