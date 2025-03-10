@@ -1,0 +1,1 @@
+web: gunicorn RAYYAN_ENTERPRISES.wsgi
