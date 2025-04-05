@@ -93,8 +93,8 @@
                 <small>{{ image.created_at|date:"M d, Y" }}</small>
 
                 {% if user.is_authenticated %}
-                    <a href="{% url 'post:add_image' %}" class="btn">📤 تحميل صورة جديدة</a>
-                    <a href="{% url 'post:delete_image' image.id %}" class="btn btn-danger">🗑️ حذف</a>
+                    <a href="{% url 'news:add_image' %}" class="btn">📤 تحميل صورة جديدة</a>
+                    <a href="{% url 'news:delete_image' image.id %}" class="btn btn-danger">🗑️ حذف</a>
                 {% endif %}
             </div>
         </div>
