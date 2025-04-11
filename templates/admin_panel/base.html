@@ -113,7 +113,7 @@
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> الفيديوهات</a>
               <ul class="dropdown-menu dropdown-menu-dark">
                 {% for video in videos %}
-                  <li><a class="dropdown-item" href="{% url 'news:image_list' %}">{{ video.title }}</a></li>
+                  <li><a class="dropdown-item" href="{% url 'news:vedio_list' %}">{{ video.title }}</a></li>
                 {% empty %}
                   <li><a class="dropdown-item" href="#">لا يوجد أي فيديو</a></li>
                 {% endfor %}
@@ -128,7 +128,7 @@
               </ul>
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> المقالات</a>
               <ul class="dropdown-menu dropdown-menu-dark">
-                {% for new in news %}
+                {% for article in articles %}
                   <li><a class="dropdown-item" href="{% url 'news:article_list' %}">{{ article.title }}</a></li>
                 {% empty %}
                   <li><a class="dropdown-item" href="#">لا يوجد أية مقالة</a></li>
