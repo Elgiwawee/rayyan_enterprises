@@ -111,6 +111,7 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'admin_panel:admin_logout' %}">تسجيل الخروج</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> الفيديوهات</a>
+              {% if user is None and user.is_not_staff %}
               <ul class="dropdown-menu dropdown-menu-dark">
                 {% for video in videos %}
                   <li><a class="dropdown-item" href="{% url 'news:vedio_list' %}">{{ video.title }}</a></li>
@@ -144,6 +145,7 @@
               </ul>
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">معلومات عن الشركة</a>
               <ul class="dropdown-menu dropdown-menu-dark">
+              {% endif %}
                   <li><a class="dropdown-item" href="{% url 'home:about' %}">عن شركتنا</a></li>
                   <li><a class="dropdown-item" href="{% url 'home:contact' %}">اتصل بنا</a></li>
               </ul>
