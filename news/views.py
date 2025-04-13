@@ -4,7 +4,7 @@ from django.contrib import messages
 from .forms import ArticleForm, ImageForm, VideoForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.translation import activate, gettext_lazy as _
-
+~~~
 def is_admin(user):
     return user.is_authenticated and user.is_staff
 
@@ -63,8 +63,7 @@ def delete_article(request, pk):
         return redirect('news:article_list')
     return render(request, 'news/delete_article.html', {'article': article})
 
-@login_required
-@user_passes_test(is_admin)
+
 def image_list(request):
     """ Show all images """
     images = Image.objects.all().order_by('-created_at')
@@ -98,8 +97,6 @@ def delete_image(request, image_id):
     messages.success(request, _("Image deleted successfully!"))
     return redirect('news:image_list')
 
-@login_required
-@user_passes_test(is_admin)
 def video_list(request):
     """ Show all videos """
     videos = Video.objects.all().order_by('-created_at')
