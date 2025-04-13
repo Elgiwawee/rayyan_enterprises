@@ -1,11 +1,8 @@
 from .models import Article, Image, Video
 
-
-def article_list(request):
-    return {"news": Article.objects.all()}
-
-def image_list(request):
-    return {"news": Image.objects.all()}
-
-def video_list(request):
-    return {"news": Video.objects.all()}
+def news_content(request):
+    return {
+        "articles": Article.objects.all(),
+        "images": Image.objects.all(),
+        "videos": Video.objects.all(),
+    }
